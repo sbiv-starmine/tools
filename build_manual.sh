@@ -16,4 +16,5 @@ sudo bin/install-mecab-ipadic-neologd
 # /etc/mecabrcを編集
 # dicdir = /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd
 
-
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
