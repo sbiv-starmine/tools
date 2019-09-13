@@ -4,13 +4,18 @@
 # gcloudのインストールが必要
 # https://firebase.google.com/docs/firestore/manage-data/move-data?hl=ja
 
-if [ $# -ne 1 ]; then
-  project="starmine-develop"
+read -sp "starmine-develop: d, starmine-production: p (d/p)? " env
+echo
+
+if [ $env = "p" ]; then
+  env="starmine-production"
 else
-  project=$1
+  env="starmine-develop"
 fi
 
-gcloud config set project $project
-gcloud beta firestore export gs://$project.appspot.com --collection-ids=admin --async
-gcloud beta firestore operations list
+gcloud config set project $env
+gcloud beta firestore export gs://$env.appspot.com --collection-ids=admin --async
+echo
 
+echo ">> gcloud beta firestore operations list"
+gcloud beta firestore operations list
